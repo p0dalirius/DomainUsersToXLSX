@@ -57,15 +57,13 @@ def get_domain_users(ldap_server, ldap_session, attrs=["*"]):
 def parse_args():
     print("DomainUsersToXLSX v1.2 - by @podalirius_\n")
 
-    parser = argparse.ArgumentParser(add_help=True, description='Find uncommon SMB shares on remote machines.')
+    parser = argparse.ArgumentParser(add_help=True, description='Extract all users from an Active Directory domain to an Excel worksheet.')
     parser.add_argument('-ts', action='store_true', help='Adds timestamp to every logging output')
     parser.add_argument('--use-ldaps', action='store_true', help='Use LDAPS instead of LDAP')
     parser.add_argument("-q", "--quiet", dest="quiet", action="store_true", default=False, help="Show no information at all.")
     parser.add_argument("-debug", dest="debug", action="store_true", default=False, help="Debug mode.")
     parser.add_argument("-no-colors", dest="colors", action="store_false", default=True, help="Disables colored output mode")
-    parser.add_argument("-I", "--ignore-hidden-shares", dest="ignore_hidden_shares", action="store_true", default=False, help="Ignores hidden shares (shares ending with $)")
-    parser.add_argument("-t", "--threads", dest="threads", action="store", type=int, default=20, required=False, help="Number of threads (default: 20)")
-    parser.add_argument("-o", "--output-file", dest="output_file", type=str, default="accounts.xlsx", required=False, help="Output file to store the results in. (default: shares.json)")
+    parser.add_argument("-o", "--output-file", dest="output_file", type=str, default="accounts.xlsx", required=False, help="Output file to store the results in. (default: accounts.xlsx)")
 
     authconn = parser.add_argument_group('authentication & connection')
     authconn.add_argument('--dc-ip', required=True, action='store', metavar="ip address", help='IP Address of the domain controller or KDC (Key Distribution Center) for Kerberos. If omitted it will use the domain part (FQDN) specified in the identity parameter')
