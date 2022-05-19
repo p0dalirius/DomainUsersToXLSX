@@ -30,13 +30,13 @@ def get_domain_users(ldap_server, ldap_session, attrs=["*"]):
             continue
         results[entry['dn']] = {}
         for attrname in attrs:
-            if attrname in ['name', 'sAMAccountName', 'distinguishedName', 'logonCount']:
+            if attrname in ['name', 'sAMAccountName', 'distinguishedName']:
                 results[entry['dn']][attrname] = entry["attributes"][attrname]
 
             elif attrname in ['memberOf', 'description']:
                 results[entry['dn']][attrname] = '\n'.join(entry["attributes"][attrname])
 
-            elif attrname in ['adminCount']:
+            elif attrname in ['adminCount', 'logonCount']:
                 results[entry['dn']][attrname] = entry["attributes"][attrname]
                 if (type(entry["attributes"][attrname]) == list):
                     if (len(entry["attributes"][attrname]) == 0):
