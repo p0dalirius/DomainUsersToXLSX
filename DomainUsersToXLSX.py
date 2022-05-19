@@ -342,6 +342,8 @@ if __name__ == '__main__':
     args = parse_args()
     init_logger(args)
 
+    args.output_file = "accounts_%s.xlsx" % args.auth_domain.lower()
+
     auth_lm_hash = ""
     auth_nt_hash = ""
     if args.auth_hashes is not None:
