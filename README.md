@@ -1,9 +1,8 @@
 # DomainUsersToXLSX
 
 <p align="center">
-  This Python script can be used to bypass IP source restrictions using HTTP headers.
+  Extract all users from an Active Directory domain to an Excel worksheet. 
   <br>
-  <img src="https://badges.pufler.dev/visits/p0dalirius/DomainUsersToXLSX/"/>
   <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/p0dalirius/DomainUsersToXLSX">
   <a href="https://twitter.com/intent/follow?screen_name=podalirius_" title="Follow"><img src="https://img.shields.io/twitter/follow/podalirius_?label=Podalirius&style=social"></a>
   <br>
@@ -16,32 +15,40 @@
 ## Usage
 
 ```
-$ ./ipsourcebypass.py -h
-[~] IP source bypass using HTTP headers, v1.2
+$ ./DomainUsersToXLSX.py 
+DomainUsersToXLSX v1.2 - by @podalirius_
 
-usage: ipsourcebypass.py [-h] [-v] -i IP [-t THREADS] [-x PROXY] [-k] [-L] [-j JSONFILE] [-C] [-H HEADERS] [-S] url
+usage: DomainUsersToXLSX.py [-h] [-ts] [--use-ldaps] [-q] [-debug] [-no-colors] [-I] [-t THREADS] [-o OUTPUT_FILE] --dc-ip ip address [-d DOMAIN] [-u USER]
+                            [--no-pass | -p PASSWORD | -H [LMHASH:]NTHASH | --aes-key hex key] [-k]
 
-This Python script can be used to test for IP source bypass using HTTP headers
+Extract all users from an Active Directory domain to an Excel worksheet. 
 
-positional arguments:
-  url                   e.g. https://example.com:port/path
-
-optional arguments:
+options:
   -h, --help            show this help message and exit
-  -v, --verbose         arg1 help message
-  -i IP, --ip IP        IP to spoof.
-  -t THREADS, --threads THREADS
-                        Number of threads (default: 5)
-  -x PROXY, --proxy PROXY
-                        Specify a proxy to use for requests (e.g., http://localhost:8080)
-  -k, --insecure        Allow insecure server connections when using SSL (default: False)
-  -L, --location        Follow redirects (default: False)
-  -j JSONFILE, --jsonfile JSONFILE
-                        Save results to specified JSON file.
-  -C, --curl            Generate curl commands for each request.
-  -H HEADERS, --header HEADERS
-                        arg1 help message
-  -S, --save            Save all HTML responses.
+  -ts                   Adds timestamp to every logging output
+  --use-ldaps           Use LDAPS instead of LDAP
+  -q, --quiet           Show no information at all.
+  -debug                Debug mode.
+  -no-colors            Disables colored output mode
+  -o OUTPUT_FILE, --output-file OUTPUT_FILE
+                        Output file to store the results in. (default: accounts.xlsx)
+
+authentication & connection:
+  --dc-ip ip address    IP Address of the domain controller or KDC (Key Distribution Center) for Kerberos. If omitted it will use the domain part (FQDN)
+                        specified in the identity parameter
+  -d DOMAIN, --domain DOMAIN
+                        (FQDN) domain to authenticate to
+  -u USER, --user USER  user to authenticate with
+
+  --no-pass             Don't ask for password (useful for -k)
+  -p PASSWORD, --password PASSWORD
+                        Password to authenticate with
+  -H [LMHASH:]NTHASH, --hashes [LMHASH:]NTHASH
+                        NT/LM hashes, format is LMhash:NThash
+  --aes-key hex key     AES key to use for Kerberos Authentication (128 or 256 bits)
+  -k, --kerberos        Use Kerberos authentication. Grabs credentials from .ccache file (KRB5CCNAME) based on target parameters. If valid credentials
+                        cannot be found, it will use the ones specified in the command line
+
 ```
 
 ## Demonstration
