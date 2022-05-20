@@ -10,7 +10,7 @@
 
 ## Features
 
- - [x] Extract all domain users to Excel worksheet
+ - [x] Extract all domain users to Excel worksheet with filters on columns
 
 ## Usage
 

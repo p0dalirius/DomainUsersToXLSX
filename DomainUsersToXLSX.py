@@ -395,6 +395,6 @@ if __name__ == '__main__':
         data = [user.get(f, "") for f in interesting_attributes]
         worksheet.write_row(row_id, 0, data)
         row_id += 1
-
+    worksheet.autofilter(0, 0, row_id, len(interesting_attributes) - 1)
     workbook.close()
     print("[+] List of users written to %s" % args.output_file)
