@@ -1,4 +1,4 @@
-# DomainUsersToXLSX
+![](./.github/banner.png)
 
 <p align="center">
   Extract all users from an Active Directory domain to an Excel worksheet. 
@@ -53,6 +53,8 @@ authentication & connection:
 ## Demonstration
 
 ![](./.github/extract.png)
+
+This gives us the following Excel file:
 
 ![](./.github/excel.png)
 
