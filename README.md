@@ -16,7 +16,7 @@
 
 ```
 $ ./DomainUsersToXLSX.py 
-DomainUsersToXLSX v1.2 - by @podalirius_
+DomainUsersToXLSX v1.2 - by Remi GASCOU (Podalirius)
 
 usage: DomainUsersToXLSX.py [-h] [-ts] [--use-ldaps] [-q] [-debug] [-no-colors] [-o OUTPUT_FILE] --dc-ip ip address [-d DOMAIN] [-u USER]
                             [--no-pass | -p PASSWORD | -H [LMHASH:]NTHASH | --aes-key hex key] [-k]

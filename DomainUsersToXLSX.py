@@ -6,9 +6,9 @@
 
 import datetime
 import xlsxwriter
-from impacket.examples import logger, utils
+from impacket.examples import logger
 from impacket import version
-from impacket.smbconnection import SMBConnection, SMB2_DIALECT_002, SMB2_DIALECT_21, SMB_DIALECT, SessionError
+from impacket.smbconnection import SMBConnection, SMB2_DIALECT_002, SMB2_DIALECT_21, SMB_DIALECT
 from impacket.spnego import SPNEGO_NegTokenInit, TypesMech
 import argparse
 import binascii
@@ -55,7 +55,7 @@ def get_domain_users(ldap_server, ldap_session, attrs=["*"]):
 
 
 def parse_args():
-    print("DomainUsersToXLSX v1.2 - by @podalirius_\n")
+    print("DomainUsersToXLSX v1.2 - by Remi GASCOU (Podalirius)\n")
 
     parser = argparse.ArgumentParser(add_help=True, description='Extract all users from an Active Directory domain to an Excel worksheet.')
     parser.add_argument('-ts', action='store_true', help='Adds timestamp to every logging output')
